@@ -5,9 +5,19 @@ A dashboard powered by data from Zoom's APIs and SDK's to help with the day to d
 Called Intern. Simply because interns do all the grunt work so the main team can get on with their jobs.
 
 ## Development
+<p>
+<a href="https://www.youtube.com/watch?v=uy73Lgd9EmM">
+        Short tease video describing the features
+</a>
+</p>
+<p>
+        <a href="https://www.youtube.com/watch?v=zLijHkYBln8">
+        Intern Demo
+</a>
+ </p>
 
-You can view our deployment here: https://intern-soc.vercel.app/
-(username: shifthappens.intern.demo@gmail.com, password: interndemo123)
+<!-- You can view our deployment here: https://intern-soc.vercel.app/
+(username: shifthappens.intern.demo@gmail.com, password: interndemo123) -->
 
 ## Contributors
 
