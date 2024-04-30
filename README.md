@@ -7,7 +7,7 @@ Called Intern. Simply because interns do all the grunt work so the main team can
 ## Development
 <p>
 <a href="https://www.youtube.com/watch?v=uy73Lgd9EmM">
-        Short tease video describing the features
+        Short teaser video describing the features
 </a>
 </p>
 <p>
