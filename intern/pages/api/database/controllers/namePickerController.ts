@@ -4,17 +4,16 @@ import * as namePickerModel from "../models/namePickerModel";
 // api request handlers
 
 // GET list of all bootcampers
-export async function getParticpantsList(testCheck : boolean) {
-  
+export async function getParticpantsList(testCheck: boolean) {
   // table to run call on
-  let tableName : string = 'name_picker'
+  let tableName: string = "name_picker";
   // check if this is a test or a real api call
   if (!testCheck) {
-    tableName = 'test_' + tableName
+    tableName = "test_" + tableName;
   }
 
   try {
-    const nameList = await namePickerModel.getParticpantsList(tableName)
+    const nameList = await namePickerModel.getParticpantsList(tableName);
     return nameList;
   } catch (error) {
     console.error("Error in getParticpantsList controller", error);
@@ -22,22 +21,19 @@ export async function getParticpantsList(testCheck : boolean) {
 }
 
 // Delete participant by zoomID
-export async function deleteName(zoomID : number, testCheck : boolean) {
+export async function deleteName(zoomID: number, testCheck: boolean) {
+  // table to run call on
+  let tableName: string = "name_picker";
+  // check if this is a test or a real api call
+  if (!testCheck) {
+    tableName = "test_" + tableName;
+  }
 
-    // table to run call on
-    let tableName : string = 'name_picker'
-    // check if this is a test or a real api call
-    if (!testCheck) {
-      tableName = 'test_' + tableName
-    }
-    console.log(`running query on table: ${tableName}`)
+  console.log(`running query on table: ${tableName}`);
   try {
     // call getEngagementCardData from model
-    console.log(`zoomPollID = ${zoomID}`)
-    const nameToDelete = await namePickerModel.deleteName(
-      zoomID,
-      tableName,
-    );
+    console.log(`zoomPollID = ${zoomID}`);
+    const nameToDelete = await namePickerModel.deleteName(zoomID, tableName);
 
     // assume 404 status if the zoomID is not found
     if (!nameToDelete) {

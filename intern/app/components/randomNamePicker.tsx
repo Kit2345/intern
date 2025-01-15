@@ -6,14 +6,38 @@ export type ParticipantNamesResponse = {
   names: string[];
 };
 
+const hardcodedNames = [
+  "Amy",
+  "Beth",
+  "Charlie",
+  "David",
+  "Emma",
+  "Frank",
+  "Grace",
+  "Hannah",
+  "Ian",
+  "Jack",
+  "Karen",
+  "Liam",
+  "Mia",
+  "Noah",
+  "Olivia",
+  "Paul",
+  "Quinn",
+  "Rachel",
+  "Sophie",
+  "Tom",
+];
+
 const NamePicker: React.FC = () => {
   const [names, setNames] = useState<string[]>([]);
   const [selectedName, setSelectedName] = useState<string | null>(null);
 
   useEffect(() => {
     const initializeNames = async () => {
-      const data: ParticipantNamesResponse = await fetchParticipantNames();
-      setNames(data.names);
+      // const data: ParticipantNamesResponse = await fetchParticipantNames();
+      // setNames(data.names);
+      setNames(hardcodedNames);
     };
     initializeNames();
   }, []);
@@ -29,8 +53,9 @@ const NamePicker: React.FC = () => {
   const resetNames = () => {
     const initializeNames = async () => {
       try {
-        const data = await fetchParticipantNames();
-        setNames(data.names);
+        // const data = await fetchParticipantNames();
+        // setNames(data.names);
+        setNames(hardcodedNames);
         setSelectedName(null);
       } catch (error) {
         console.error("Error fetching names:", error);
