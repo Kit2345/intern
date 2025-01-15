@@ -14,24 +14,43 @@ export default function AttendanceTracker({
     initialAttendanceAlert
   );
 
-  const baseURL = mainRoute()
+  const testAttendanceData = {
+    attPercent: "55%",
+    alerts: [
+      {
+        name: "Chirstner",
+        alertLevel: 1,
+      },
+      {
+        name: "Kit",
+        alertLevel: 4,
+      },
+      {
+        name: "Dave",
+        alertLevel: 97,
+      },
+    ],
+  };
 
-  useEffect(() => {
-    const fetchAttendanceData = async () => {
-      try {
-        const response = await fetch(`${baseURL}${getRoute}getBootcampers`);
-        const updatedData = await response.json();
+  // const baseURL = mainRoute()
 
-        console.log("Updated attendance data:", updatedData);
-      } catch (error) {
-        console.error("Failed to fetch attendance data:", error);
-      }
-    };
-    fetchAttendanceData();
-    const interval = setInterval(fetchAttendanceData, 3600000);
-  }, []);
+  // useEffect(() => {
+  //   const fetchAttendanceData = async () => {
+  //     try {
+  //       const response = await fetch(`${baseURL}${getRoute}getBootcampers`);
+  //       const updatedData = await response.json();
 
-  const { attPercent, alerts } = attendanceAlert;
+  //       console.log("Updated attendance data:", updatedData);
+  //     } catch (error) {
+  //       console.error("Failed to fetch attendance data:", error);
+  //     }
+  //   };
+  //   fetchAttendanceData();
+  //   const interval = setInterval(fetchAttendanceData, 3600000);
+  // }, []);
+
+  // const { attPercent, alerts } = attendanceAlert;
+  const { attPercent, alerts } = testAttendanceData;
   console.log(`attPercent: ${attPercent}`);
   console.log(`alerts: ${alerts}`);
   const attendancePercent = { attPercent };
