@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import EngagementLoggerBox from "./eloggerBox";
 import ButtonEngagementCSV from "./buttonEngagmentLoggerCSV";
 import { createEngagementProps } from "../dataObjectsForCompProps/engagementLoggerPipeline";
+import { testEngagementData } from "../demoObjects/engagementLoggerData";
 
 // EngagmentData interface for type safety
 interface EngagementData {
@@ -34,7 +35,8 @@ export default function EngagementLogger() {
   const fetchData = async (weekNumber: number) => {
     setLoading(true); // Set loading to true before fetching
     try {
-      const data = await createEngagementProps(weekNumber);
+      // const data = await createEngagementProps(weekNumber);
+      const data = testEngagementData;
       setEngagementProps(data as EngagementData[]);
     } finally {
       setLoading(false); // Set loading to false after fetching, even if there's an error
