@@ -24,15 +24,15 @@ const hindFont = Hind({
   subsets: ["latin"],
 });
 export default async function Index() {
-  // const supabase = createServerComponentClient({ cookies });
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession();
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  // if (!session) {
-  //   console.log("unauth user redirect to login");
-  //   redirect("/login");
-  // }
+  if (!session) {
+    console.log("unauth user redirect to login");
+    redirect("/login");
+  }
 
   const attendanceData = await attendanceDataFetcher();
   console.log(`attendanceData`);
