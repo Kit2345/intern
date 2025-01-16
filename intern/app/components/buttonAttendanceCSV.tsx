@@ -6,7 +6,7 @@ export default function ButtonAttendanceCSV() {
   async function fetchCSV() {
     try {
       const response = await fetch(
-        "https://intern-soc.vercel.app/api/database/routes/downloads/downloadAttendance"
+        "https://intern-kappa-seven.vercel.app//api/database/routes/downloads/downloadAttendance"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

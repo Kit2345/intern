@@ -32,25 +32,26 @@ export default function AttendanceTracker({
     ],
   };
 
-  // const baseURL = mainRoute()
+  const baseURL = mainRoute();
 
-  // useEffect(() => {
-  //   const fetchAttendanceData = async () => {
-  //     try {
-  //       const response = await fetch(`${baseURL}${getRoute}getBootcampers`);
-  //       const updatedData = await response.json();
+  useEffect(() => {
+    const fetchAttendanceData = async () => {
+      try {
+        const response = await fetch(`${baseURL}${getRoute}getBootcampers`);
+        const updatedData = await response.json();
 
-  //       console.log("Updated attendance data:", updatedData);
-  //     } catch (error) {
-  //       console.error("Failed to fetch attendance data:", error);
-  //     }
-  //   };
-  //   fetchAttendanceData();
-  //   const interval = setInterval(fetchAttendanceData, 3600000);
-  // }, []);
+        console.log("Updated attendance data:", updatedData);
+      } catch (error) {
+        console.error("Failed to fetch attendance data:", error);
+      }
+    };
+    fetchAttendanceData();
+    const interval = setInterval(fetchAttendanceData, 3600000);
+  }, []);
 
-  // const { attPercent, alerts } = attendanceAlert;
-  const { attPercent, alerts } = testAttendanceData;
+  const { attPercent, alerts } = attendanceAlert;
+  // const { attPercent, alerts } = testAttendanceData;
+
   console.log(`attPercent: ${attPercent}`);
   console.log(`alerts: ${alerts}`);
   const attendancePercent = { attPercent };

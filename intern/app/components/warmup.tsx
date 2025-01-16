@@ -3,7 +3,9 @@ import { useEffect } from "react";
 
 export default function WarmupComponent() {
   useEffect(() => {
-    fetch("/api/ping")
+    fetch(
+      "https://intern-kappa-seven.vercel.app/api/database/GET/getBootcampers"
+    )
       .then((response) => {
         if (response.ok) {
           console.log("Supabase warmup successful");
