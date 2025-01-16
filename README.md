@@ -20,7 +20,7 @@ Called Intern. Simply because interns do all the grunt work so the main team can
 
 January 2025: 
 You can view our deployment [here](https://intern-kappa-seven.vercel.app/)
-(username: wing_kitleung@hotmail.com, password: 12345)
+(username: shifthappens.intern.demo@gmail.com, password: interndemo123)
 
 Please note it is still work in progress: We are currently restoring functionality after we have lost access to a paid Zoom account. 
 
