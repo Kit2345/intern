@@ -1,19 +1,58 @@
 import Link from "next/link";
+import { headers, cookies } from "next/headers";
+import { createClient } from "../../utils/supabase/server";
+import { redirect } from "next/navigation";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 export default function Login({
   searchParams,
 }: {
   searchParams: { message: string };
 }) {
-  const router = useRouter();
+  const signIn = async (formData: FormData) => {
+    "use server";
 
-  const handleLogin = (event: React.FormEvent) => {
-    event.preventDefault();
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
 
-    // Mock login action: simply redirect to the main page
-    router.push("/");
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.error("Authentication error:", error);
+      return redirect("/login?message=Could not authenticate user");
+    }
+
+    return redirect("/");
+  };
+
+  const signUp = async (formData: FormData) => {
+    "use server";
+
+    const origin = headers().get("origin");
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${origin}/auth/callback`,
+      },
+    });
+
+    if (error) {
+      console.error("Authentication error:", error);
+      return redirect("/login?message=Could not authenticate user");
+    }
+
+    return redirect("/login?message=Check email to continue sign in process");
   };
 
   return (
@@ -50,7 +89,7 @@ export default function Login({
 
           <form
             className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-            onSubmit={handleLogin}
+            action={signIn}
           >
             <label className="text-md text-white" htmlFor="email">
               Email
@@ -76,7 +115,7 @@ export default function Login({
             <button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2 text-white hover:bg-green-600">
               Login
             </button>
-            {/* <button
+            <button
               formAction={signUp}
               className="border-2 border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2 bg-gray-300 hover:bg-gray-400"
             >
@@ -86,7 +125,7 @@ export default function Login({
               <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
                 {searchParams.message}
               </p>
-            )} */}
+            )}
           </form>
         </div>
       </div>
