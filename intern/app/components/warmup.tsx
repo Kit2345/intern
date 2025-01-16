@@ -14,4 +14,5 @@ export default function WarmupComponent() {
       .catch((error) => console.error("Error warming up Supabase:", error));
   }, []);
 
-  return null; 
+  return null;
+}
