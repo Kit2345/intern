@@ -1,5 +1,6 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import WarmupComponent from "./components/warmup";
 
 // For supabase redirects
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
+        <WarmupComponent />
         <main className="max-w-full max-h-full">{children}</main>
       </body>
     </html>
