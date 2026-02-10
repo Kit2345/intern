@@ -29,10 +29,10 @@ export default async function Index() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session) {
-    console.log("unauth user redirect to login");
-    redirect("/login");
-  }
+  // if (!session) {
+  //   console.log("unauth user redirect to login");
+  //   redirect("/login");
+  // }
 
   const attendanceData = await attendanceDataFetcher();
   console.log(`attendanceData`);
