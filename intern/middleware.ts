@@ -1,6 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "./utils/supabase/middleware";
 
+export const config = {
+  runtime: "nodejs", // instead of edge
+};
+
 export async function middleware(request: NextRequest) {
   try {
     // This `try/catch` block is only here for the interactive tutorial.
